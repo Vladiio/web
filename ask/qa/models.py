@@ -9,7 +9,7 @@ from django.core.urlresolvers import reverse
 class QuestionManager(models.Manager):
 
     def new(self, page_number=1):
-        qs = self.get_queryset()
+        qs = self.get_queryset().order_by('-pk')
         return paginate(qs, page_number)
 
     def popular(self, page_number=1):
