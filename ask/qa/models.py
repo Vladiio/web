@@ -19,12 +19,13 @@ class QuestionManager(models.Manager):
 
 class Question(models.Model):
     title = models.CharField(max_length=120)
-    text = models.TextField()
+    text = models.TextField(blank=True, null=True)
     added_at = models.DateTimeField(auto_now_add=True)
-    rating = models.IntegerField()
+    rating = models.IntegerField(default=0)
     author = models.ForeignKey(settings.AUTH_USER_MODEL)
     likes = models.ManyToManyField(settings.AUTH_USER_MODEL,
-                                                            related_name='liked')
+                                                            related_name='liked',
+                                                            blank=True)
 
     objects = QuestionManager()
 
@@ -42,7 +43,7 @@ class Answer(models.Model):
     text = models.TextField()
     added_at = models.DateTimeField(auto_now_add=True)
     question = models.ForeignKey(Question)
-    author = models.ForeignKey(settings.AUTH_USER_MODEL)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, )
 
 
 def paginate(qs, page_number, limit=10):
