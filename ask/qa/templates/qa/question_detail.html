@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ object }}</h1>
+    <p>{{ object.text }}</p>
+    <h2>Answers: </h2>
+    <ul>
+        {% for answer in object.answer_set.all %}
+            {{answer.text}}
+        {% endfor %}
+    </ul>
+{% endblock %}

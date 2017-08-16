@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <ul>
+{% for obj in object_list %}
+        <li>
+            <a href="{{ obj.get_absolute_url }}">{{ obj }}</a>
+        </li>
+{% endfor %}
+        </ul>
+        {% if page.has_previous %}
+            <a href="?page={{ page.previous_page_number }}">Prev</a>
+        {% endif %}
+        {% if page.has_next %}
+            <a href="?page={{ page.next_page_number }}">Next</a>
+        {% endif %}
+
+{% endblock %}
