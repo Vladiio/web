@@ -9,4 +9,9 @@
             {{answer.text}}
         {% endfor %}
     </ul>
+    <form action='.' method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type='submit' value='Send'>
+    </form>
 {% endblock %}

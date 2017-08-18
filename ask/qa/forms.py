@@ -9,6 +9,7 @@ class AskForm(forms.Form):
 
     def save(self):
         instance = Question(**self.cleaned_data)
+        instance.author_id = 1
         instance.save()
         return instance
 
@@ -21,6 +22,7 @@ class AnswerForm(forms.Form):
 
     def save(self):
         instance = Answer(**self.cleaned_data)
+        instance.author_id = 1
         instance.save()
         return instance
  
